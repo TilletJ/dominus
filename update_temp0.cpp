@@ -34,7 +34,7 @@ int main(int argc, char *argv [])
     curl_easy_setopt(curl, CURLOPT_URL, adresse);
 		std::string postthis = "type=command&param=udevice&idx=" + idx + "&nvalue=0&svalue=" + temp;
     curl_easy_setopt(curl, CURLOPT_POSTFIELDS, postthis);
-		//std::cout << postthis << std::endl;
+		std::cout << adresse << "\n" << postthis << std::endl;
  
     /* Perform the request, res will get the return code */ 
     res = curl_easy_perform(curl);
