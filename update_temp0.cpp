@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <curl/curl.h>
 #include <string>
+#include <iostream>
 
 int main(int argc, char *argv [])
 {
@@ -18,6 +19,12 @@ int main(int argc, char *argv [])
 	std::string idx(argv[3]);
 	std::string temp(argv[4]);
 
+	//char *ip = argv[1];
+	//char *port = argv[2];
+	//char *idx = argv[3];
+	//char *temp = argv[4];
+
+
 	CURL *curl;
   CURLcode res;
  
@@ -27,6 +34,7 @@ int main(int argc, char *argv [])
     curl_easy_setopt(curl, CURLOPT_URL, adresse);
 		std::string postthis = "type=command&param=udevice&idx=" + idx + "&nvalue=0&svalue=" + temp;
     curl_easy_setopt(curl, CURLOPT_POSTFIELDS, postthis);
+		//std::cout << postthis << std::endl;
  
     /* Perform the request, res will get the return code */ 
     res = curl_easy_perform(curl);
