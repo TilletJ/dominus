@@ -1,8 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <curl/curl.h>
-#include <string>
-#include <iostream>
 
 int main(int argc, char *argv [])
 {
@@ -14,27 +12,20 @@ int main(int argc, char *argv [])
     exit(EXIT_FAILURE);
   }
 
-	std::string ip(argv[1]);
-	std::string port(argv[2]);
-	std::string idx(argv[3]);
-	std::string temp(argv[4]);
+	char *ip = argv[1];
+	char *port = argv[2];
+	char *idx = argv[3];
+	char *temp = argv[4];
 
-	//char *ip = argv[1];
-	//char *port = argv[2];
-	//char *idx = argv[3];
-	//char *temp = argv[4];
-
+	char http_address[250]; // buffer for the http request
 
 	CURL *curl;
   CURLcode res;
  
   curl = curl_easy_init();
 	if(curl) {
-		std::string adresse = ip + ":" + port + "/json.htm";
-    curl_easy_setopt(curl, CURLOPT_URL, adresse);
-		std::string postthis = "type=command&param=udevice&idx=" + idx + "&nvalue=0&svalue=" + temp;
-    curl_easy_setopt(curl, CURLOPT_POSTFIELDS, postthis);
-		std::cout << adresse << "\n" << postthis << std::endl;
+		sprintf(http_address, "http://%s:%s/json.htm?type=command&param=udevice&idx=%s&nvalue=0&svalue=%s", ip, port, idx, temp);
+    curl_easy_setopt(curl, CURLOPT_URL, http_address);
  
     /* Perform the request, res will get the return code */ 
     res = curl_easy_perform(curl);
