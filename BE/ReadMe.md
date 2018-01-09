@@ -1,7 +1,6 @@
-Version 2.0
+Version 3.0
 ===========
 
-The two shell scripts must be placed in the `/opt/domoticz/scripts` folder on the RPI3.
-The binary file `dominus_switchOnOff` must be placed in `/usr/bin` folder on the RPI3.
+Nothing has been modified. It was juste about adding a relay. An image shows our electric setup :
 
-The C file is here to watch the code which have been cross-compiled to be run on the RPI3.
+![Montage_relais.jpg](Montage_relais.jpg)
