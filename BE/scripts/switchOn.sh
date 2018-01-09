@@ -1,1 +1,1 @@
-echo "ACTION ON $(date)" >> /tmp/switch.log
+/usr/bin/dominus_switchOnOff 17 1
