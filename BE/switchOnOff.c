@@ -1,19 +1,13 @@
 #include <stdio.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include "switchOnOff.h"
 
-int main(int argc, char *argv[]) {
-	if (argc != 3) {
-        	printf("Usage : %s <GPIO_NUMBER> <VALUE_TO_WRITE>\n", argv[0]);
-		return 1;
-	}
-
-	char *gpio_number = argv[1];
-	char *value = argv[2];
+int switch_gpio(char *gpio_number, char *value) {
 
 	// Create the gpio folder if it doesn't exist yet.
 	char gpio_path[255];
-	sprintf(gpio_path, "/sys/class/gpio/gpio%s", argv[1]);
+	sprintf(gpio_path, "/sys/class/gpio/gpio%s", gpio_number);
 
 	struct stat st = {0};
 
