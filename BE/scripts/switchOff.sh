@@ -1,1 +1,1 @@
-/usr/bin/dominus_switchOnOff 17 0
+/usr/bin/dominus_client jorispi 25000 17 0

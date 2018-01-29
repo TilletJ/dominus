@@ -111,7 +111,7 @@ int main(int argc, char * argv[])
     lastSpace++;
 
     char *value = lastSpace;
-    switch_gpio("17", "1");
+    switch_gpio(gpio_number, value);
   
     close(socket_service);
   }

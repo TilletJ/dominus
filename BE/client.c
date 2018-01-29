@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
   }
 
   char *gpio_number = argv[3];
-	char *value = argv[4];
+  char *value = argv[4];
 
   if ((sock=socket(AF_INET, SOCK_STREAM, 0)) ==-1)
   {

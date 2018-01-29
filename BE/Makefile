@@ -3,17 +3,17 @@ default: all
 serveur.o: switchOnOff.h
     
 all: serveur.o client.o switchOnOff.o
-	gcc -o client client.o
-	gcc -o serveur serveur.o switchOnOff.o
+	~/buildroot-2017.08/output/host/bin/arm-linux-gcc -o dominus_client client.o
+	~/buildroot-2017.08/output/host/bin/arm-linux-gcc -o dominus_serveur serveur.o switchOnOff.o
 
 switchOnOff.o: switchOnOff.c switchOnOff.h
-	gcc -c switchOnOff.c
+	~/buildroot-2017.08/output/host/bin/arm-linux-gcc -c switchOnOff.c
 
 client.o: client.c
-	gcc -c client.c
+	~/buildroot-2017.08/output/host/bin/arm-linux-gcc -c client.c
 
 serveur.o: serveur.c
-	gcc -c serveur.c
+	~/buildroot-2017.08/output/host/bin/arm-linux-gcc -c serveur.c
 
 clean:
 	rm *.o 
