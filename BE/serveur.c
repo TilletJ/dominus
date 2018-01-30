@@ -22,15 +22,10 @@ void signals_handler(int signal_number)
   exit(EXIT_SUCCESS);
 }
 
-void print_msg(char * chat) {
-  fputs("Client : ", stdout);
-  fputs(chat, stdout);
-  fflush(stdout);
-}
 
 int main(int argc, char * argv[])
 {
-  // signals handler
+  // signals handler to close properly the socket on CTRL-C
   struct sigaction action;
   action.sa_handler = signals_handler;
   sigemptyset(& (action.sa_mask));
@@ -41,7 +36,7 @@ int main(int argc, char * argv[])
   int port;
   char nom[30];
   struct sockaddr_in adr, adresse;
-  socklen_t lgadresse;//sizeof(struct sockaddr_in);
+  socklen_t lgadresse;
   if (argc!=2)
   {
     fprintf(stderr,"Usage : %s port-number", argv[0]);
@@ -93,10 +88,11 @@ int main(int argc, char * argv[])
 
     read(socket_service, chat, MAXTEXT);
 
-    //print_msg(chat);
     char *p = chat;
     char *gpio_number = p;
     char *lastSpace;
+
+    // Parsing with the space characters
     while(*p != '\0')
     {
         if (*p == ' ')
@@ -111,12 +107,12 @@ int main(int argc, char * argv[])
     lastSpace++;
 
     char *value = lastSpace;
+    // call the function that actually change the LED value
     switch_gpio(gpio_number, value);
   
     close(socket_service);
   }
 
- 
   return 0;
 }
 

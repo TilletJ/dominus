@@ -49,6 +49,7 @@ int main(int argc, char *argv[])
   char c[MAXTEXT];
   sprintf(c, "%s %s\n", gpio_number, value);
 
+  // send the gpio_number and the value to the socket
   write(sock, &c, MAXTEXT);
 
 

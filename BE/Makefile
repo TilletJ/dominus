@@ -1,19 +1,21 @@
+CC=~/buildroot-2017.08/output/host/bin/arm-linux-gcc # Change here the path to the compiler
+
 default: all
 
 serveur.o: switchOnOff.h
     
 all: serveur.o client.o switchOnOff.o
-	~/buildroot-2017.08/output/host/bin/arm-linux-gcc -o dominus_client client.o
-	~/buildroot-2017.08/output/host/bin/arm-linux-gcc -o dominus_serveur serveur.o switchOnOff.o
+	$(CC) -o dominus_client client.o
+	$(CC) -o dominus_serveur serveur.o switchOnOff.o
 
 switchOnOff.o: switchOnOff.c switchOnOff.h
-	~/buildroot-2017.08/output/host/bin/arm-linux-gcc -c switchOnOff.c
+	$(CC) -c switchOnOff.c
 
 client.o: client.c
-	~/buildroot-2017.08/output/host/bin/arm-linux-gcc -c client.c
+	$(CC) -c client.c
 
 serveur.o: serveur.c
-	~/buildroot-2017.08/output/host/bin/arm-linux-gcc -c serveur.c
+	$(CC) -c serveur.c
 
 clean:
 	rm *.o 
